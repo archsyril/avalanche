@@ -1,20 +1,22 @@
 require "entity"
+screenw = 512
+screenh = screenw/2*1.5
+scale = 1--screenw/256
 
 function love.load()
-  local ws = 1024
-  scale = ws/8
+  love.window.setMode(screenw, screenh)
   love.graphics.setDefaultFilter("nearest", "nearest")
-  .lo\\]0   Glove.window.setMode(ws, ws/2*1.5)
   love.physics.setMeter(32)
-  local gravity = 9.81 * love.physics.getMeter()
+  local gravity = 0--9.81 * love.physics.getMeter()
   world = love.physics.newWorld(0, gravity, true)
   love.graphics.setBackgroundColor(255, 255, 255)
   love.window.setTitle("avalanche")
   player = Player(1,1)
+  --ground = Ground(0,0)
 end
 
 function love.draw()
-  love.graphics.scale(2)
+  love.graphics.scale(scale)
   player:draw()
 end
 
