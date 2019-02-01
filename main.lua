@@ -3,6 +3,7 @@ require "player"
 require "ground"
 require "block"
 math = require "math"
+
 screenw = 512
 screenh = screenw/2*1.5
 scale = 1
@@ -10,6 +11,7 @@ DEF_r = 255--0
 DEF_g = 255--0
 DEF_b = 255--0
 function love.load()
+  local cam = gamera.new(0,0,2000,2000)
   love.window.setMode(screenw, screenh)
   love.graphics.setDefaultFilter("nearest", "nearest")
   love.physics.setMeter(32)--64 * scale)

@@ -42,3 +42,23 @@ function class(base, init)
   setmetatable(c, mt)
   return c
 end
+
+--[[ class.lua
+
+local function class(init, base)
+  local cls = {}
+  local cls_mt = {__index = cls}
+  function cls_mt.__call(...)
+    local self = setmetatable({}, cls_mt)
+    init(self, ...)
+    return self
+  end
+  setmetatable(cls, cls_mt)
+  if base then
+    setmetatable(cls, {__index = base})
+  end
+  return cls
+end
+
+return class
+--]]
